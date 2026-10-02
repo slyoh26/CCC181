@@ -18,9 +18,9 @@ My Git configuration uses my student ID number without the hyphen, as instructed
 
 | Exercise No. | Exercise Title | Screenshot File |
 |---|---|---|
-| 01 | <Exercise Title> | `<lastname>_<firstname>_01.png` |
-| 02 | <Exercise Title> | `<lastname>_<firstname>_02.png` |
-| 03 | <Exercise Title> | `<lastname>_<firstname>_03.png` |
+| 01 | master | `Ditanongun_Sammy_01.jpg` |
+| 02 | commit-one-file | `Ditanongun_Sammy_02.jpg` |
+| 03 | commit-one-file-staged | `Ditanongun_Sammy_03.jpg` |
 
 > Add, remove, or update rows based on the exercises you completed.
 

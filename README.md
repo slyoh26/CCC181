@@ -3,7 +3,7 @@
 # Git Exercises
 
 **Course:** CCC181  
-**Student Name:** Ditanongun, Sammy 
+**Student Name:** Ditanongun, Sammy
 **Student ID:** 20240709
 
 ## Activity Description

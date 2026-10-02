@@ -29,9 +29,9 @@ My Git configuration uses my student ID number without the hyphen, as instructed
 ```text
 activities/git-exercises/
 ├── README.md
-├── <lastname>_<firstname>_01.png
-├── <lastname>_<firstname>_02.png
-└── <lastname>_<firstname>_03.png
+├── Ditanongun_Sammy_01.png
+├── Ditanongun_Sammy_02.png
+└── Ditanongun_Sammy_03.png
 ```
 
 ## Declaration

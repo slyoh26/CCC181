@@ -6,7 +6,7 @@
 
 | | |
 | --- | --- |
-| **Photo or sketch** |  [Your icon or stock image. Not a photo of the real person you interviewed.] |
+| **Photo or sketch** |  [Dani, the person waiting](images/dani.jpg) |
 | **Age, role and background** | 21, 3rd-year Microbiology student at MSU-IIT *(interview)*. Requests documents such as forms and records from the registrar and returns later to claim them.  Has classes during the day and fits the visit between them. Other people in the same line are alumni and other students *(observation)*. |
 | **Goals** | 1. Claim the requested documents without wasting time at the counter. 2. Be served in a fair order without having to push to be noticed. 3. ⚠ Request the right document in as few steps as possible. |
 | **Frustrations** | 1. Has to be "papansin" (make themselves noticed) to get attention *(interview)*, because there is no clear sign of who is next. 2. Waits when claiming, even though the document is already prepared by the time they return, because one staff member hands out the documents *(interview)*. 3. Waits around 5 minutes at the counter, especially when many people are claiming at once *(interview)*. 4. The line is often long, and the process takes several steps (fill in a paper form, pay the fees, return with the receipt, get a number, come back later) *(observation)*. 5. The online Google Form for requests can also be slow *(observation)*. |
@@ -38,14 +38,14 @@
 
 ---
 
-## Mr. Reyes, the staff member
+## Mrs. Reyes, the staff member
 
-> ⚠ "[Replace with a real quote from a registrar staff member or from your observation of the counter, about the crowd, the line, or keeping track of who comes next.]"
+> "It takes time especially pag daghan na ang ga pila."
 
 | | |
 | --- | --- |
-| **Photo or sketch** |  [Your icon or stock image. Not a photo of anyone you interviewed.] |
-| **Age, role and background** |  35, registrar staff member who receives requests and receipts and hands out documents at the counter. Serves students and alumni all day, with the busiest rush in the morning. |
+| **Photo or sketch** | [Mrs. Reyes, Registrar staff](images/reyes.jpg) |
+| **Age, role and background** |  30, registrar staff member who receives requests and receipts and hands out documents at the counter. Serves students and alumni all day, with the busiest rush in the morning. |
 | **Goals** | 1. Serve people in the right order without arguments about who was first. 2. Quickly see who is next and which document they need. 3.  Keep the crowd at the counter under control during the rush. |
 | **Frustrations** | 1. A long line of students and alumni at the counter at once *(observation)*. 2. Handling the paper form, the receipt, the number and the claiming of documents manually for every request . 3. People who leave without telling staff, so staff call numbers nobody answers. |
 | **Devices and context** |  Shared office desktop or laptop at the registrar counter, with a mouse and keyboard. Talking to a student while using the screen, so actions must be quick and hard to click by mistake. |

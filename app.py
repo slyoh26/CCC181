@@ -65,9 +65,47 @@ def join():
     flash(f"You joined the queue. Your number is #{number}.", "success")
     return redirect(url_for("ticket", ticket_id=number))
 
-@app.route("/staff")
+@app.get("/staff")
 def staff_dashboard():
-    return "Staff dashboard coming soon"
+    service_id = request.args.get("service_id", type=int)
+    queue = [t for t in TICKETS if t["status"] in ("waiting", "called")]
+    if service_id:
+        queue = [t for t in queue if t["service_id"] == service_id]
+    # Called tickets first, then waiting tickets by number
+    queue.sort(key=lambda t: (t["status"] != "called", t["number"]))
+
+    names = {s["id"]: s["name"] for s in SERVICES}
+    # ★ waiting count per document, shown in the filter
+    counts = {s["id"]: sum(1 for t in TICKETS
+                           if t["service_id"] == s["id"] and t["status"] == "waiting")
+              for s in SERVICES}
+    return render_template("staff.html", queue=queue, services=SERVICES,
+                           names=names, selected=service_id, counts=counts)
+
+
+@app.post("/staff/call-next")
+def call_next():
+    service_id = request.form.get("service_id", type=int)
+    waiting = [t for t in TICKETS if t["status"] == "waiting"
+               and (not service_id or t["service_id"] == service_id)]
+    if not waiting:
+        flash("No one is waiting.", "warning")
+    else:
+        nxt = min(waiting, key=lambda t: t["number"])
+        nxt["status"] = "called"
+        flash(f"Called number #{nxt['number']}.", "info")
+    return redirect(url_for("staff_dashboard", service_id=service_id))
+
+
+@app.post("/staff/tickets/<int:ticket_id>/<action>")
+def staff_action(ticket_id, action):
+    new_status = {"call": "called", "serve": "served", "no-show": "no-show"}.get(action)
+    t = find_ticket(ticket_id)
+    if t is None or new_status is None:
+        abort(404)
+    t["status"] = new_status
+    flash(f"Number #{ticket_id} marked {new_status}.", "info")
+    return redirect(url_for("staff_dashboard"))
 
 
 def find_ticket(number):

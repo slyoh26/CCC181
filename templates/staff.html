@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}Staff · RegistrarQueue{% endblock %}
+
+{% block content %}
+<h1 class="h3 mb-3">Staff dashboard</h1>
+
+<form method="post" action="{{ url_for('call_next') }}" class="mb-3">
+  <input type="hidden" name="service_id" value="{{ selected or '' }}">
+  <button type="submit" class="btn btn-dark btn-lg w-100 py-3 fs-3">Call next</button>
+</form>
+
+<form method="get" class="mb-3">
+  <label for="filter" class="form-label">Document</label>
+  <div class="input-group">
+    <select id="filter" name="service_id" class="form-select">
+      <option value="">All documents</option>
+      {% for s in services %}
+        <option value="{{ s.id }}" {% if selected == s.id %}selected{% endif %}>
+          {{ s.name }} ({{ counts[s.id] }} waiting)
+        </option>
+      {% endfor %}
+    </select>
+    <button type="submit" class="btn btn-outline-secondary">Filter</button>
+  </div>
+</form>
+
+{% if queue %}
+<div class="table-responsive">
+  <table class="table table-bordered align-middle">
+    <caption>People currently waiting or called, in order</caption>
+    <thead class="table-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Actions</th>
+        <th scope="col">Name</th>
+        <th scope="col">Document</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for t in queue %}
+      <tr>
+        <td class="fw-bold">{{ t.number }}</td>
+        <td>
+          <div class="d-flex gap-1">
+            <form method="post"
+                  action="{{ url_for('staff_action', ticket_id=t.number, action='serve') }}">
+              <button type="submit" class="btn btn-sm btn-success"
+                      aria-label="Mark number {{ t.number }} as served">Serve</button>
+            </form>
+            <form method="post"
+                  action="{{ url_for('staff_action', ticket_id=t.number, action='no-show') }}">
+              <button type="submit" class="btn btn-sm btn-outline-danger"
+                      aria-label="Mark number {{ t.number }} as no-show">No-show</button>
+            </form>
+          </div>
+        </td>
+        <td>{{ t.name }}</td>
+        <td>{{ names[t.service_id] }}</td>
+        <td>
+          <span class="badge text-bg-{{ 'success' if t.status == 'called' else 'warning' }}">
+            {{ t.status|capitalize }}
+          </span>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+  <div class="alert alert-light border">Nobody is waiting right now.</div>
+{% endif %}
+{% endblock %}

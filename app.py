@@ -136,7 +136,14 @@ def leave(ticket_id):
         abort(404)
     t["status"] = "no-show"
     flash("You left the queue.", "info")
-    return redirect(url_for("index"))
+    return redirect(url_for("index"))\
+
+@app.get("/queue/<int:ticket_id>/status.json")
+def ticket_status(ticket_id):
+    t = find_ticket(ticket_id)
+    if t is None:
+        abort(404)
+    return {"status": t["status"], "ahead": people_ahead(t)}
 
 
 

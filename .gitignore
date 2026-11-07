@@ -5,6 +5,7 @@ venv/
 # Python cache files
 __pycache__/
 *.pyc
+tempCodeRunnerFile.py
 
 # Secrets such as API keys
 .env

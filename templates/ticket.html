@@ -1,9 +1,44 @@
 {% extends "base.html" %}
-
-{% block title %}Ticket #{{ ticket_id }} · RegistarQueue{% endblock %}
+{% block title %}Number #{{ ticket.number }} · RegistrarQueue{% endblock %}
 
 {% block content %}
-  <h2>Ticket #{{ ticket_id }}</h2>
-  <p>This page was built from the URL <code>/queue/{{ ticket_id }}</code>.</p>
-  <p><a href="{{ url_for('index') }}">&larr; Back to the queue</a></p>
+{% set badge_colors = {"waiting": "warning", "called": "success",
+                       "served": "primary", "no-show": "secondary"} %}
+<div class="row justify-content-center">
+  <div class="col-12 col-md-8 col-lg-5">
+    <div class="card text-center shadow-sm">
+      <div class="card-body py-4">
+        <h1 class="h6 text-uppercase text-body-secondary">Your number</h1>
+        <p class="display-1 fw-bold mb-0">#{{ ticket.number }}</p>
+        <p class="lead">{{ service.name }}</p>
+
+        <div id="live-status" aria-live="polite">
+          <span id="status-badge"
+                class="badge fs-6 text-bg-{{ badge_colors[ticket.status] }}">{{ ticket.status|capitalize }}</span>
+          <p id="position" class="fs-4 fw-semibold mt-3 mb-0">
+            {% if ticket.status == "waiting" %}
+              {% if ahead == 0 %}You're next!
+              {% else %}{{ ahead }} {{ "person" if ahead == 1 else "people" }} ahead of you{% endif %}
+            {% elif ticket.status == "called" %}
+              It's your turn! Go to the registrar counter and bring your receipt.
+            {% elif ticket.status == "served" %}
+              Done. Your request has been served.
+            {% else %}
+              You are no longer in the queue.
+            {% endif %}
+          </p>
+        </div>
+        <p class="small text-body-secondary mt-2 mb-0">This page updates automatically.</p>
+
+        {% if ticket.status in ("waiting", "called") %}
+        <hr class="my-4">
+        <form method="post" action="{{ url_for('leave', ticket_id=ticket.number) }}">
+          <p class="small text-body-secondary mb-2">Only leave if you no longer need this number.</p>
+          <button type="submit" class="btn btn-outline-danger">Leave the queue</button>
+        </form>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

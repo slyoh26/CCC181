@@ -24,6 +24,6 @@ There are no screenshots with below 90 score. No issues found.
 | Error messages say what to do, in text |✓|✓|✓|
 | Status is shown in words, not only color |✓|✓|✓|
 | Readable at 375 px with no sideways page scroll |✓ |✓ |✓ |
-| Buttons at least about 44 × 44 px on a phone |✓|✓|✖|
+| Buttons at least about 44 × 44 px on a phone |✓|✓|✖ → fixed: Serve and No-show used btn-sm (about 31 px tall); replaced with a .action-btn rule with min-height: 44px and wider spacing.|
 | One `<h1>` and headings in order |✓|✓|✓|
 | `<html lang>` is set |✓|✓|✓|

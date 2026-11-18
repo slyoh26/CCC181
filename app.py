@@ -103,9 +103,10 @@ def staff_action(ticket_id, action):
     t = find_ticket(ticket_id)
     if t is None or new_status is None:
         abort(404)
+    if action == "serve" and t["status"] != "called":
+        flash(f"Number #{ticket_id} must be called before it can be served.", "warning")
+        return redirect(url_for("staff_dashboard"))
     t["status"] = new_status
-    flash(f"Number #{ticket_id} marked {new_status}.", "info")
-    return redirect(url_for("staff_dashboard"))
 
 
 def find_ticket(number):

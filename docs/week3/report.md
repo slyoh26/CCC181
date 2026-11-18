@@ -1,6 +1,5 @@
 # Week 3 Report: RegistrarQueue
 
-> **DRAFT. Delete this note before submitting.** Lines marked ⚠ need your own details or a check. The Reflection is a draft in my words, so rewrite it in yours.
 
 ## 1. Title details
 

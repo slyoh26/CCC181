@@ -24,6 +24,13 @@ header h1 { margin: 0; }
 header a { color: var(--paper); text-decoration: none; }
 .tagline { margin: 0.25rem 0 0; color: #C5CEDD; }
 
+.action-btn {
+  min-height: 44px;
+  min-width: 44px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 main {
   max-width: 720px;
   margin: 2rem auto;
